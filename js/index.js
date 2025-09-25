@@ -1,10 +1,7 @@
 // Home page functionality
 document.addEventListener("DOMContentLoaded", function () {
-  // Smooth scrolling for navigation links
-  const navLinks = document.querySelectorAll('nav a[href^="#"]');
-  navLinks.forEach((link) => {
-    link.addEventListener("click", smoothScroll);
-  });
+  // Initialize mobile menu
+  initializeMobileMenu();
 
   // Animate hero section on load
   animateHeroSection();
@@ -15,6 +12,57 @@ document.addEventListener("DOMContentLoaded", function () {
   // Typing animation for the name
   startTypingAnimation();
 });
+
+function initializeMobileMenu() {
+  const mobileToggle = document.querySelector('.mobile-menu-toggle');
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = document.querySelector('.overlay');
+  const navLinks = document.querySelectorAll('.sidebar nav a');
+
+  // SINGLE BUTTON - Toggle mobile menu
+  mobileToggle.addEventListener('click', function() {
+    const isActive = this.classList.contains('active');
+    
+    if (isActive) {
+      // Close menu
+      closeMobileMenu();
+    } else {
+      // Open menu
+      this.classList.add('active');
+      sidebar.classList.add('active');
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  });
+
+  // Close menu when clicking overlay
+  overlay.addEventListener('click', function() {
+    closeMobileMenu();
+  });
+
+  // Close menu when clicking nav links
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      if (window.innerWidth <= 768) {
+        closeMobileMenu();
+      }
+    });
+  });
+
+  function closeMobileMenu() {
+    mobileToggle.classList.remove('active');
+    sidebar.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Handle window resize
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+      closeMobileMenu();
+    }
+  });
+}
 
 function animateHeroSection() {
   const hero = document.querySelector(".hero");
@@ -85,18 +133,5 @@ function startTypingAnimation() {
     };
 
     setTimeout(typeWriter, 1000);
-  }
-}
-
-function smoothScroll(e) {
-  e.preventDefault();
-  const targetId = this.getAttribute("href").substring(1);
-  const targetSection = document.getElementById(targetId);
-
-  if (targetSection) {
-    targetSection.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
   }
 }

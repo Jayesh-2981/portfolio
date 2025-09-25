@@ -1,23 +1,20 @@
 // Experience page functionality
 document.addEventListener("DOMContentLoaded", function () {
-  // Animate experience items
+  // Initialize experience page
   animateExperienceItems();
-
-  // Add hover effects to experience list items
-  addExperienceHoverEffects();
-
-  // Setup timeline animation
-  setupTimelineAnimation();
+  addExperienceInteractivity();
+  highlightActiveNav();
 });
 
 function animateExperienceItems() {
   const title = document.querySelector(".section h1");
-  const experienceItems = document.querySelectorAll(".section ul li");
+  const experienceItems = document.querySelectorAll(".experience-item");
 
+  // Animate title
   if (title) {
     title.style.opacity = "0";
-    title.style.transform = "translateY(-20px)";
-    title.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+    title.style.transform = "translateY(-30px)";
+    title.style.transition = "opacity 0.8s ease, transform 0.8s ease";
 
     setTimeout(() => {
       title.style.opacity = "1";
@@ -25,69 +22,59 @@ function animateExperienceItems() {
     }, 200);
   }
 
+  // Animate experience items with stagger effect
   experienceItems.forEach((item, index) => {
     item.style.opacity = "0";
-    item.style.transform = "translateX(-50px)";
-    item.style.transition = `opacity 0.6s ease ${
-      0.3 + index * 0.2
-    }s, transform 0.6s ease ${0.3 + index * 0.2}s`;
+    item.style.transform = "translateX(-50px) scale(0.95)";
+    item.style.transition = `opacity 0.6s ease ${0.3 + index * 0.2}s, transform 0.6s ease ${0.3 + index * 0.2}s`;
 
     setTimeout(() => {
       item.style.opacity = "1";
-      item.style.transform = "translateX(0)";
+      item.style.transform = "translateX(0) scale(1)";
     }, 300 + index * 200);
   });
 }
 
-function addExperienceHoverEffects() {
-  const experienceItems = document.querySelectorAll(".section ul li");
-
+function addExperienceInteractivity() {
+  const experienceItems = document.querySelectorAll(".experience-item");
+  
   experienceItems.forEach((item) => {
-    item.addEventListener("mouseenter", function () {
-      this.style.transform = "translateX(10px) scale(1.02)";
-      this.style.transition = "transform 0.3s ease";
-      this.style.boxShadow = "0 5px 15px rgba(0,0,0,0.1)";
+    const techTags = item.querySelectorAll(".tech");
+    
+    // Add hover effect for tech tags
+    techTags.forEach((tech) => {
+      tech.addEventListener("mouseenter", function() {
+        this.style.transform = "translateY(-2px) scale(1.05)";
+        this.style.boxShadow = "0 4px 12px rgba(102, 126, 234, 0.4)";
+      });
+
+      tech.addEventListener("mouseleave", function() {
+        this.style.transform = "translateY(0) scale(1)";
+        this.style.boxShadow = "0 4px 8px rgba(102, 126, 234, 0.3)";
+      });
     });
 
-    item.addEventListener("mouseleave", function () {
-      this.style.transform = "translateX(0) scale(1)";
-      this.style.boxShadow = "none";
+    // Add click effect for experience cards
+    item.addEventListener("click", function() {
+      this.style.transform = "scale(0.98)";
+      setTimeout(() => {
+        this.style.transform = "scale(1)";
+      }, 150);
     });
   });
 }
 
-function setupTimelineAnimation() {
-  // Add timeline indicator
-  const experienceList = document.querySelector(".section ul");
-  if (experienceList) {
-    experienceList.style.position = "relative";
-    experienceList.style.paddingLeft = "30px";
+function highlightActiveNav() {
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
+  const navLinks = document.querySelectorAll("nav a");
 
-    // Create timeline line
-    const timelineLine = document.createElement("div");
-    timelineLine.style.position = "absolute";
-    timelineLine.style.left = "15px";
-    timelineLine.style.top = "0";
-    timelineLine.style.bottom = "0";
-    timelineLine.style.width = "2px";
-    timelineLine.style.backgroundColor = "#007bff";
-    timelineLine.style.opacity = "0.3";
-    experienceList.appendChild(timelineLine);
-
-    // Add timeline dots
-    const items = document.querySelectorAll(".section ul li");
-    items.forEach((item) => {
-      const dot = document.createElement("div");
-      dot.style.position = "absolute";
-      dot.style.left = "-25px";
-      dot.style.top = "10px";
-      dot.style.width = "10px";
-      dot.style.height = "10px";
-      dot.style.backgroundColor = "#007bff";
-      dot.style.borderRadius = "50%";
-      dot.style.zIndex = "1";
-      item.style.position = "relative";
-      item.appendChild(dot);
-    });
-  }
+  navLinks.forEach((link) => {
+    const linkHref = link.getAttribute("href");
+    if (linkHref === currentPage || 
+        (currentPage === "experience.html" && linkHref === "experience.html")) {
+      link.classList.add("active");
+    } else {
+      link.classList.remove("active");
+    }
+  });
 }

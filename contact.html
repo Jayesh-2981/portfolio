@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Jayesh Jadhav</title>
     <link rel="stylesheet" href="style/contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
@@ -26,25 +27,176 @@
     </aside>
 
     <main class="main">
-        <section class="section contactform">
-            <h1>Contact Me</h1>
-            <form>
-                <div class="mb-3">
-                    <label for="clientemail">Email</label>
-                    <input type="email" id="clientemail" required>
+        <section class="contact-container">
+            <!-- Contact Info Section -->
+            <div class="contact-info-section">
+                <h1>Let's Connect</h1>
+                <p class="contact-subtitle">
+                    Looking for opportunities in full-stack development, web technologies, 
+                    or seeking a passionate developer for your team? I'd love to hear from you!
+                </p>
+
+                <div class="contact-methods">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>jadhavjayesh949@gmail.com</p>
+                            <a href="mailto:jadhavjayesh949@gmail.com" class="contact-btn">
+                                <i class="fas fa-paper-plane"></i> Send Email
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Phone</h3>
+                            <p>+91 9561242084</p>
+                            <a href="tel:+919561242084" class="contact-btn">
+                                <i class="fas fa-phone-alt"></i> Call Now
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>LinkedIn</h3>
+                            <p>Professional Network</p>
+                            <a href="https://linkedin.com/in/jayesh-jadhav-9089a7188" target="_blank" class="contact-btn">
+                                <i class="fab fa-linkedin"></i> Connect
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Location</h3>
+                            <p>Khed, Maharashtra, India</p>
+                            <p class="location-note">Open to remote work & relocation</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="clientphone">Phone</label>
-                    <input type="tel" id="clientphone" required>
+            </div>
+
+            <!-- Form and Actions Container -->
+            <div class="form-and-actions-container">
+                <!-- Contact Form Section -->
+                <div class="contact-form-section">
+                    <div class="form-container">
+                        <h2>Get In Touch</h2>
+                        <p class="form-subtitle">
+                            Ready to discuss job opportunities, collaborations, or just want to connect? 
+                            Send me a message and I'll get back to you soon!
+                        </p>
+
+                        <form id="contactForm" class="contact-form">
+                            <div class="form-group">
+                                <label for="clientName">Full Name *</label>
+                                <input type="text" id="clientName" name="clientName" required>
+                                <span class="error-message" id="nameError"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="clientEmail">Email Address *</label>
+                                <input type="email" id="clientEmail" name="clientEmail" required>
+                                <span class="error-message" id="emailError"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="clientPhone">Phone Number</label>
+                                <input type="tel" id="clientPhone" name="clientPhone">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="clientCompany">Company/Organization</label>
+                                <input type="text" id="clientCompany" name="clientCompany">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inquiryType">Type of Inquiry *</label>
+                                <select id="inquiryType" name="inquiryType" required>
+                                    <option value="">Select inquiry type</option>
+                                    <option value="job-opportunity">Job Opportunity</option>
+                                    <option value="interview-request">Interview Request</option>
+                                    <option value="freelance-work">Freelance Work</option>
+                                    <option value="collaboration">Collaboration</option>
+                                    <option value="networking">Professional Networking</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <span class="error-message" id="inquiryError"></span>
+                            </div>
+
+                            <!-- Custom Inquiry Type Field (Hidden by default) -->
+                            <div class="form-group" id="customInquiryGroup" style="display: none;">
+                                <label for="customInquiryType">Please specify your inquiry type *</label>
+                                <input type="text" id="customInquiryType" name="customInquiryType" 
+                                       placeholder="e.g., Mentorship, Technical Discussion, etc.">
+                                <span class="error-message" id="customInquiryError"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="clientMessage">Message *</label>
+                                <textarea id="clientMessage" name="clientMessage" rows="5" 
+                                    placeholder="Tell me about the opportunity, your requirements, or any questions you have..." required></textarea>
+                                <span class="error-message" id="messageError"></span>
+                            </div>
+
+                            <div class="form-group checkbox-group">
+                                <input type="checkbox" id="privacyConsent" name="privacyConsent" required>
+                                <label for="privacyConsent">
+                                    I consent to having this website store my information for contact purposes *
+                                </label>
+                                <span class="error-message" id="consentError"></span>
+                            </div>
+
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-paper-plane"></i>
+                                <span>Send Message</span>
+                            </button>
+                        </form>
+
+                        <div id="formMessage" class="form-message" style="display: none;"></div>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <input type="checkbox" id="isclient">
-                    <label for="isclient">I want you to work on a project with me</label>
+
+                <!-- Quick Actions Section -->
+                <div class="quick-actions-section">
+                    <h3>Quick Actions</h3>
+                    <div class="quick-actions">
+                        <a href="mailto:jadhavjayesh949@gmail.com?subject=Job Opportunity - Full Stack Developer&body=Hi Jayesh,%0D%0A%0D%0AI hope this email finds you well. I came across your portfolio and would like to discuss a potential job opportunity.%0D%0A%0D%0ABest regards," 
+                           class="quick-action-btn email-btn">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Discuss Job Opportunity</span>
+                        </a>
+                        
+                        <a href="mailto:jadhavjayesh949@gmail.com?subject=Interview Request - Web Developer Position&body=Hi Jayesh,%0D%0A%0D%0AWe would like to schedule an interview for a web developer position. Please let us know your availability.%0D%0A%0D%0AThanks," 
+                           class="quick-action-btn interview-btn">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Schedule Interview</span>
+                        </a>
+                        
+                        <a href="tel:+919561242084" class="quick-action-btn call-btn">
+                            <i class="fas fa-phone"></i>
+                            <span>Call Directly</span>
+                        </a>
+                    </div>
                 </div>
-                <button type="submit" class="btn">Submit</button>
-            </form>
+            </div>
         </section>
     </main>
+
+    <script src="js/contact.js"></script>
 </body>
 
 </html>

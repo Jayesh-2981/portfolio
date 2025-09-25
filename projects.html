@@ -9,6 +9,13 @@
 </head>
 
 <body>
+    <!-- Mobile Menu Toggle -->
+    <div class="mobile-menu-toggle">
+        <span class="hamburger"></span>
+        <span class="hamburger"></span>
+        <span class="hamburger"></span>
+    </div>
+
     <aside class="sidebar">
         <h2>Jayesh Jadhav</h2>
         <nav>
@@ -25,17 +32,120 @@
         </nav>
     </aside>
 
+    <!-- Overlay for mobile menu -->
+    <div class="overlay"></div>
+
     <main class="main">
         <section class="section">
-            <h1>Projects</h1>
-            <ul>
-                <li><strong>Selection Sort Visualizer:</strong> An interactive tool to visualize sorting algorithms.</li>
-                <li><strong>ML Based Sales Forecasting and Purchase Reminder:</strong> Machine Learning model to predict sales & remind purchases.
-                </li>
-                <li><strong>Student Result Management System:</strong> A PHP-MySQL app for managing results & classes.</li>
-            </ul>
+            <h1>My Projects</h1>
+            
+            <div class="projects-grid">
+                <!-- Selection Sort Visualizer -->
+                <div class="project-card algorithm">
+                    <div class="project-header">
+                        <div class="project-icon">🎨</div>
+                        <div class="project-category">Algorithm Visualization</div>
+                    </div>
+                    <div class="project-content">
+                        <h2>Selection Sort Visualizer</h2>
+                        <p class="project-description">
+                            Created a browser-based sorting algorithm visualizer with real-time animation and step tracking 
+                            to help students understand sorting logic better.
+                        </p>
+                        <div class="project-achievements">
+                            <h4>Key Achievements:</h4>
+                            <ul>
+                                <li>Helped 100+ students understand sorting logic better during demo sessions in college workshops</li>
+                                <li>Implemented color-coded transitions for comparison, swaps, and final sorted states</li>
+                                <li>Created interactive educational tool with real-time step tracking</li>
+                            </ul>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech">JavaScript</span>
+                            <span class="tech">HTML5</span>
+                            <span class="tech">CSS3</span>
+                            <span class="tech">Canvas API</span>
+                        </div>
+                        <div class="project-impact">
+                            <span class="impact-badge">Educational Impact</span>
+                            <span class="impact-number">100+ Students Helped</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ML Sales Forecasting -->
+                <div class="project-card machine-learning">
+                    <div class="project-header">
+                        <div class="project-icon">📊</div>
+                        <div class="project-category">Machine Learning</div>
+                    </div>
+                    <div class="project-content">
+                        <h2>ML Based Sales Forecasting and Purchase Reminder</h2>
+                        <p class="project-description">
+                            Built a multiple linear regression model to predict daily sales based on historical data 
+                            with automated purchase reminder system for inventory optimization.
+                        </p>
+                        <div class="project-achievements">
+                            <h4>Key Achievements:</h4>
+                            <ul>
+                                <li>Automated low-stock purchase reminders to optimize inventory planning and reduce waste</li>
+                                <li>Achieved over 90% prediction accuracy on test data, aiding the shop's decision-making process</li>
+                                <li>Implemented intelligent forecasting system using historical sales patterns</li>
+                            </ul>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech">Python</span>
+                            <span class="tech">Machine Learning</span>
+                            <span class="tech">Linear Regression</span>
+                            <span class="tech">Data Analytics</span>
+                            <span class="tech">Pandas</span>
+                        </div>
+                        <div class="project-impact">
+                            <span class="impact-badge">High Accuracy</span>
+                            <span class="impact-number">90%+ Prediction Rate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Student Result Management -->
+                <div class="project-card web-application">
+                    <div class="project-header">
+                        <div class="project-icon">🎓</div>
+                        <div class="project-category">Web Application</div>
+                    </div>
+                    <div class="project-content">
+                        <h2>Student Result Management System</h2>
+                        <p class="project-description">
+                            Designed a full-featured admin dashboard to manage students, subjects, classes, and results 
+                            with secure authentication and dynamic data management.
+                        </p>
+                        <div class="project-achievements">
+                            <h4>Key Achievements:</h4>
+                            <ul>
+                                <li>Designed a full-featured admin dashboard to manage students, subjects, classes, and results</li>
+                                <li>Implemented a secure login system and form validations to protect academic data</li>
+                                <li>Reduced result generation time by 50% with dynamic result table generation and filters</li>
+                            </ul>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech">PHP</span>
+                            <span class="tech">MySQL</span>
+                            <span class="tech">HTML5</span>
+                            <span class="tech">CSS3</span>
+                            <span class="tech">JavaScript</span>
+                            <span class="tech">Bootstrap</span>
+                        </div>
+                        <div class="project-impact">
+                            <span class="impact-badge">Performance Boost</span>
+                            <span class="impact-number">50% Time Reduction</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
+
+    <script src="js/projects.js"></script>
 </body>
 
 </html>

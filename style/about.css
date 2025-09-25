@@ -67,18 +67,116 @@ body {
   min-height: 100vh;
   padding: 50px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
-.section {
-  max-width: 800px;
+/* About Intro Section */
+.about-intro {
+  max-width: 900px;
   width: 100%;
   background: white;
   padding: 50px;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
+  margin-bottom: 40px;
+}
+
+.about-intro:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.about-intro h1 {
+  font-size: 2.8rem;
+  margin-bottom: 30px;
+  color: #333;
+  position: relative;
+  text-align: center;
+}
+
+.about-intro h1::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 2px;
+}
+
+/* About Content Styles */
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.intro-text {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.highlight-intro {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: #444;
+  font-weight: 500;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 25px 30px;
+  border-radius: 12px;
+  border-left: 4px solid #667eea;
+  margin: 0;
+}
+
+.about-details {
+  display: grid;
+  gap: 30px;
+}
+
+.detail-section {
+  background: #f8f9fa;
+  padding: 25px 30px;
+  border-radius: 12px;
+  border-left: 4px solid transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.detail-section:hover {
+  border-left-color: #667eea;
+  background: #ffffff;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.detail-section h2 {
+  font-size: 1.4rem;
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.detail-section p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #555;
+  margin: 0;
+  text-align: justify;
+}
+
+/* General Section Styles for backward compatibility */
+.section {
+  max-width: 900px;
+  width: 100%;
+  background: white;
+  padding: 50px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  margin-bottom: 40px;
 }
 
 .section:hover {
@@ -152,30 +250,128 @@ body {
     padding: 20px;
   }
 
-  .section {
+  .about-intro {
     padding: 30px 25px;
+    margin-bottom: 20px;
   }
 
-  .section h1 {
-    font-size: 2rem;
+  .about-intro h1 {
+    font-size: 2.2rem;
   }
 
-  .section p {
-    font-size: 1.1rem;
+  .highlight-intro {
+    font-size: 1.2rem;
+    padding: 20px 25px;
+  }
+
+  .detail-section {
+    padding: 20px 25px;
+  }
+
+  .detail-section h2 {
+    font-size: 1.2rem;
+  }
+
+  .detail-section p {
+    font-size: 1rem;
     text-align: left;
   }
 }
 
 @media screen and (max-width: 480px) {
+  .about-intro,
+  .stats-section,
   .section {
     padding: 25px 20px;
   }
 
+  .about-intro h1,
   .section h1 {
+    font-size: 1.9rem;
+  }
+
+  .stats-section h2 {
+    font-size: 1.6rem;
+  }
+
+  .highlight-intro {
+    font-size: 1.1rem;
+    padding: 18px 20px;
+  }
+
+  .detail-section {
+    padding: 18px 20px;
+  }
+
+  .detail-section h2 {
+    font-size: 1.1rem;
+  }
+
+  .detail-section p,
+  .section p {
+    font-size: 0.95rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .stat-item {
+    padding: 20px 12px;
+  }
+
+  .stat-number {
     font-size: 1.8rem;
   }
 
-  .section p {
-    font-size: 1rem;
+  .stat-label {
+    font-size: 0.9rem;
+  }
+}
+
+/* Additional Animation Keyframes */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
